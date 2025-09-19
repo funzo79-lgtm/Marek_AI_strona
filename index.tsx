@@ -2,7 +2,6 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-import { GoogleGenAI } from "@google/genai";
 
 interface Podcast {
     title: string;
@@ -440,9 +439,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const isAdmin = urlParams.get('admin') === 'true';
 
-    // --- Centralized AI Client ---
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
-
     /**
      * Converts markdown-like text to formatted HTML.
      * Handles bold, italics, and unordered/ordered lists.
@@ -759,18 +755,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!transcriptResponse.ok) throw new Error('Failed to fetch transcript.');
                     const transcriptText = await transcriptResponse.text();
 
-                    const systemInstruction = "Jesteś asystentem AI, którego zadaniem jest analiza i podsumowanie tekstu. Na podstawie dostarczonej transkrypcji podcastu, zidentyfikuj i wypisz od 3 do 5 kluczowych wniosków lub najważniejszych punktów w formie listy. Odpowiadaj w języku polskim. Twoja odpowiedź powinna być zwięzła i łatwa do przyswojenia.";
-                    const prompt = `Oto transkrypcja:\n\n${transcriptText}\n\nWygeneruj kluczowe wnioski.`;
-
-                    const response = await ai.models.generateContent({
-                        model: 'gemini-2.5-flash',
-                        contents: prompt,
-                        config: { systemInstruction: systemInstruction },
+                    // Call the new serverless function
+                    const aiResponse = await fetch('/.netlify/functions/generate-takeaways', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ transcriptText }),
                     });
+
+                    if (!aiResponse.ok) {
+                        const errorData = await aiResponse.json().catch(() => ({ error: 'Server error' }));
+                        throw new Error(errorData.error || 'Failed to generate takeaways from server.');
+                    }
                     
+                    const { takeaways } = await aiResponse.json();
+
                     const resultDiv = document.createElement('div');
                     resultDiv.className = 'takeaways-result';
-                    resultDiv.innerHTML = formatResponseToHtml(response.text);
+                    resultDiv.innerHTML = formatResponseToHtml(takeaways);
                     takeawaysContainer.innerHTML = ''; 
                     takeawaysContainer.appendChild(resultDiv);
                 } catch (error) {
@@ -1153,34 +1154,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const thinkingIndicator = addMessage('', 'bot', true);
 
             try {
-                const systemInstruction = "Jesteś ekspertem i asystentem AI dla strony internetowej z podcastami 'Marek AI'. Twoja wiedza jest ściśle ograniczona do dostarczonych PEŁNYCH TRANSKRYPCJI podcastów. Twoim zadaniem jest odpowiedzieć na pytanie użytkownika i ZIDENTYFIKOWAĆ źródłowy odcinek podcastu oraz przybliżony CZAS (w sekundach), w którym dany temat jest poruszany. Twoja odpowiedź MUSI być w formacie JSON, zgodnym z podanym schematem. Klucz 'answer' powinien zawierać pełną, merytoryczną odpowiedź w języku polskim. Klucze 'sourceTitle' i 'timestamp' powinny zawierać tytuł odcinka i czas w sekundach. Jeśli nie jesteś w stanie zlokalizować dokładnego fragmentu, pomiń klucze 'sourceTitle' i 'timestamp', ale wciąż udziel odpowiedzi w kluczu 'answer'. Jeśli pytanie wykracza poza treść transkrypcji, odpowiedz w kluczu 'answer', że nie posiadasz takich informacji.";
-                
-                const fullPrompt = `OTO CAŁA DOSTĘPNA WIEDZA Z TRANSKRYPCJI:\n${fullTranscriptContext}\n\nPYTANIE UŻYTKOWNIKA:\n${userInput}`;
-                
-                const response = await ai.models.generateContent({
-                  model: 'gemini-2.5-flash',
-                  contents: fullPrompt,
-                  config: {
-                    systemInstruction: systemInstruction,
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: 'OBJECT',
-                        properties: {
-                            answer: { type: 'STRING' },
-                            sourceTitle: { type: 'STRING' },
-                            timestamp: { type: 'INTEGER' }
-                        },
-                        required: ['answer']
-                    }
-                  },
+                // Call the new chatbot serverless function
+                const response = await fetch('/.netlify/functions/chatbot', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fullTranscriptContext, userInput }),
                 });
 
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ error: 'An unknown server error occurred.' }));
+                    throw new Error(errorData.error || 'Network response was not ok.');
+                }
+
                 thinkingIndicator.remove();
-                const data = JSON.parse(response.text);
+                const data = await response.json();
                 addMessage(data, 'bot');
 
             } catch (error) {
-                console.error("Błąd podczas komunikacji z API Gemini:", error);
+                console.error("Błąd podczas komunikacji z funkcją serwerową chatbota:", error);
                 thinkingIndicator.remove();
                 addMessage('Przepraszam, wystąpił błąd. Spróbuj ponownie później.', 'bot');
             } finally {
@@ -1236,49 +1227,35 @@ document.addEventListener('DOMContentLoaded', () => {
             const selectedTopic = topicSelect.value;
             let context = '';
             
-            if (selectedTopic === 'all') {
-                 const allTranscripts = await Promise.all(
-                    podcastData.map(p => fetch(p.transcriptUrl).then(res => res.text()))
-                );
-                context = allTranscripts.join('\n\n---\n\n');
-            } else {
-                const podcastIndex = parseInt(selectedTopic, 10);
-                context = await fetch(podcastData[podcastIndex].transcriptUrl).then(res => res.text());
-            }
-
-            const systemInstruction = "Jesteś asystentem AI, którego zadaniem jest tworzenie quizów. Na podstawie dostarczonego tekstu transkrypcji podcastu, wygeneruj 5 pytań wielokrotnego wyboru. Każde pytanie musi mieć 3 możliwe odpowiedzi, z których tylko jedna jest poprawna. Twoja odpowiedź MUSI być w formacie JSON, zgodnym z podanym schematem. Nie dodawaj żadnego innego tekstu ani wyjaśnień poza JSONem.";
-            
-            const prompt = `Oto tekst do analizy:\n\n${context}\n\nStwórz quiz składający się z 5 pytań.`;
-
             try {
-                const response = await ai.models.generateContent({
-                  model: 'gemini-2.5-flash',
-                  contents: prompt,
-                  config: {
-                    systemInstruction: systemInstruction,
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: 'ARRAY',
-                        items: {
-                            type: 'OBJECT',
-                            properties: {
-                                question: { type: 'STRING' },
-                                answers: {
-                                    type: 'ARRAY',
-                                    items: { type: 'STRING' }
-                                },
-                                correctAnswerIndex: { type: 'INTEGER' }
-                            },
-                            required: ['question', 'answers', 'correctAnswerIndex']
-                        }
-                    }
-                  },
+                if (selectedTopic === 'all') {
+                     const allTranscripts = await Promise.all(
+                        podcastData.map(p => fetch(p.transcriptUrl).then(res => res.text()))
+                    );
+                    context = allTranscripts.join('\n\n---\n\n');
+                } else {
+                    const podcastIndex = parseInt(selectedTopic, 10);
+                    context = await fetch(podcastData[podcastIndex].transcriptUrl).then(res => res.text());
+                }
+
+                // Call the serverless function instead of the AI model directly
+                const response = await fetch('/.netlify/functions/generate-quiz', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ context }),
                 });
 
-                const jsonResponse = JSON.parse(response.text);
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ error: 'An unknown error occurred on the server.' }));
+                    throw new Error(errorData.error || 'Network response was not ok.');
+                }
+                
+                const jsonResponse = await response.json();
                 
                 if (!Array.isArray(jsonResponse) || jsonResponse.length === 0) {
-                   throw new Error("API returned invalid quiz data.");
+                   throw new Error("The quiz data received from the server was invalid.");
                 }
 
                 // Shuffle questions for randomness

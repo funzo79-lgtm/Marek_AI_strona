@@ -1,20 +1,8 @@
 {
-  "name": "marek-ai-podcast",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
+  "name": "marek-ai-podcast-functions",
+  "version": "1.0.0",
+  "description": "Serverless functions for the Marek AI Podcast website.",
   "dependencies": {
     "@google/genai": "^1.20.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.14.0",
-    
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
   }
 }
