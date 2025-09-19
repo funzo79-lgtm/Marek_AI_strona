@@ -79,7 +79,7 @@ const podcastData: Podcast[] = [
         transcriptUrl: 'https://raw.githubusercontent.com/funzo79-lgtm/Transcripts/main/Rozdzia%C5%82%208_AI%20Hallucinations_%20Understanding%20and%20Control.txt',
     }
 ];
-const aboutProjectAudioUrl = 'https://raw.githubusercontent.com/funzo79-lgtm/Podcasty/main/ElevenLabs_2025-09-18T17_34_20_Marek%20g%1os_pvc_sp100_s50_sb75_se0_b_m2.mp3';
+const aboutProjectAudioUrl = 'https://raw.githubusercontent.com/funzo79-lgtm/Podcasty/main/ElevenLabs_2025-09-18T17_34_20_Marek%20g%C5%82os_pvc_sp100_s50_sb75_se0_b_m2.mp3';
 
 
 // Helper to format time in MM:SS
