@@ -1,0 +1,28 @@
+Witajcie w czwartym odcinku podcastu "Marek AI". W poprzednim odcinku rozmawialiśmy o wielkich modelach językowych, ich możliwościach i ograniczeniach. Dzisiaj zejdziemy na poziom praktyczny i zajmiemy się kluczową umiejętnością w pracy z AI – sztuką tworzenia skutecznych zapytań, czyli promptowaniem.
+
+Czym jest prompt? To po prostu instrukcja, pytanie lub dowolny tekst, który wprowadzamy do modelu językowego, aby uzyskać od niego odpowiedź. Jakość tej odpowiedzi w ogromnym stopniu zależy od jakości naszego promptu. Zasada "garbage in, garbage out" działa tu doskonale. Jeśli nasze zapytanie będzie niejasne, model prawdopodobnie udzieli nam ogólnej lub nieprzydatnej odpowiedzi. Dlatego warto poznać kilka zasad i technik, które pomogą nam stać się mistrzami w "rozmowie" z AI.
+
+Zacznijmy od trzech fundamentalnych zasad dobrego promptu: precyzja, kontekst i rola.
+
+Po pierwsze, precyzja. Im bardziej szczegółowe i jednoznaczne będzie nasze zapytanie, tym lepiej. Zamiast pytać "Napisz coś o psach", co jest bardzo ogólne, spróbujmy: "Napisz krótki, 100-wyrazowy akapit o historii udomowienia psa, przeznaczony dla dzieci w wieku 10 lat". Taki prompt określa temat, długość, format i grupę docelową, co daje modelowi jasne wytyczne.
+
+Po drugie, kontekst. Dostarczenie modelowi odpowiedniego tła jest kluczowe, zwłaszcza w bardziej złożonych zadaniach. Jeśli chcemy, aby AI napisało e-mail, podajmy mu kontekst: "Jestem project managerem. Napisz profesjonalny, ale przyjazny e-mail do mojego zespołu, informujący o przesunięciu terminu projektu 'Alpha' o dwa tygodnie z powodu nieoczekiwanych problemów technicznych. Podkreśl, że doceniasz ich ciężką pracę." Bez tego kontekstu, e-mail mógłby być zbyt formalny, zbyt luźny lub po prostu nieadekwatny.
+
+Po trzecie, definiowanie roli. Możemy "nakazać" modelowi, aby wcielił się w określoną rolę, co znacząco wpływa na styl i treść jego odpowiedzi. Możemy zacząć prompt od instrukcji: "Jesteś doświadczonym marketingowcem. Zaproponuj 5 chwytliwych haseł reklamowych dla nowego napoju energetycznego z naturalnych składników." Albo: "Wciel się w rolę historyka i wyjaśnij przyczyny wybuchu II wojny światowej w sposób zrozumiały dla licealisty." Nadanie roli pomaga modelowi dostosować ton i perspektywę.
+
+Oprócz tych podstawowych zasad, istnieje kilka bardziej zaawansowanych technik promptowania, które warto znać.
+
+Jedną z nich jest "Few-Shot Prompting". Polega ona na podaniu modelowi kilku przykładów tego, czego od niego oczekujemy, zanim zadamy mu właściwe pytanie. Na przykład, jeśli chcemy, aby model klasyfikował sentyment recenzji filmowych, możemy napisać:
+"Recenzja: 'Ten film był nudny.' Sentyment: Negatywny.
+Recenzja: 'Absolutnie fantastyczna gra aktorska!' Sentyment: Pozytywny.
+Recenzja: 'Całkiem niezły, ale nic specjalnego.' Sentyment: Neutralny.
+Recenzja: 'Nie mogłem oderwać wzroku od ekranu.' Sentyment: ?"
+Dając mu te przykłady, "uczymy" go w locie, jakiego rodzaju odpowiedzi oczekujemy, co znacząco poprawia jego skuteczność.
+
+Inną potężną techniką, zwłaszcza w przypadku problemów wymagających logicznego rozumowania, jest "Chain-of-Thought Prompting", czyli "promptowanie łańcuchem myśli". Zamiast prosić o samą odpowiedź, prosimy model, aby wyjaśnił swój tok rozumowania krok po kroku. Na przykład, zamiast pytać "Ile piłek tenisowych zmieści się w autobusie?", zapytajmy: "Oszacuj, ile piłek tenisowych zmieści się w standardowym autobusie szkolnym. Opisz swoje rozumowanie krok po kroku, uwzględniając wymiary autobusu, piłki i sposób ich pakowania." Taka instrukcja zmusza model do rozłożenia problemu na mniejsze części i bardziej logicznego podejścia, co często prowadzi do dokładniejszych wyników.
+
+Na koniec, warto wspomnieć o technice "Flipped Interaction", czyli odwróconej interakcji. Zamiast samemu próbować sformułować idealny prompt, możemy poprosić o to AI. Na przykład: "Chcę napisać opowiadanie fantasy o młodym czarodzieju, który odkrywa starożytny artefakt. Jestem twoim asystentem. Zadawaj mi pytania dotyczące postaci, fabuły, świata i magicznego systemu, abym mógł dostarczyć ci wszystkich informacji potrzebnych do napisania pierwszego rozdziału." W ten sposób model sam przejmuje inicjatywę i pomaga nam doprecyzować nasze potrzeby.
+
+Podsumowując, skuteczne promptowanie to sztuka, która wymaga praktyki. Pamiętajmy o trzech filarach: precyzji, kontekście i definiowaniu roli. Eksperymentujmy też z zaawansowanymi technikami, takimi jak Few-Shot, Chain-of-Thought czy Flipped Interaction. Im lepiej nauczymy się komunikować z AI, tym potężniejszym narzędziem się ona dla nas stanie.
+
+To wszystko w dzisiejszym odcinku. W następnym pójdziemy o krok dalej i zobaczymy, jak od ogólnych promptów przejść do tworzenia spersonalizowanych, wyspecjalizowanych asystentów AI. Dziękuję za uwagę i do usłyszenia!
