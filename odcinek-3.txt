@@ -1,0 +1,25 @@
+Witajcie w trzecim odcinku podcastu "Marek AI". Ostatnio mówiliśmy o uczeniu maszynowym, czyli silniku napędowym sztucznej inteligencji. Dzisiaj skupimy się na jednym z jego najbardziej spektakularnych owoców – wielkich modelach językowych, czyli LLM-ach (Large Language Models), które zrewolucjonizowały sposób, w jaki komunikujemy się z maszynami.
+
+Czym są wielkie modele językowe? To zaawansowane modele AI, które zostały wytrenowane na ogromnych ilościach danych tekstowych, aby rozumieć, generować, tłumaczyć i podsumowywać ludzki język. Modele takie jak GPT, Gemini czy Llama to właśnie przykłady LLM-ów.
+
+Zastanówmy się, co oznacza słowo "wielki" w ich nazwie. Odnosi się ono do trzech kluczowych aspektów. Po pierwsze, "wielkie dane". Modele te są trenowane na niewyobrażalnych zbiorach tekstów – setkach miliardów słów pochodzących z książek, artykułów, stron internetowych, praktycznie z całego dostępnego publicznie internetu. Ta ogromna baza wiedzy pozwala im nauczyć się gramatyki, składni, faktów o świecie i subtelnych niuansów językowych.
+
+Po drugie, "wielka liczba parametrów". Parametry to wewnętrzne zmienne modelu, które są dostosowywane w procesie uczenia. Można je porównać do synaps w ludzkim mózgu. Im więcej parametrów, tym bardziej złożone wzorce i zależności model jest w stanie uchwycić. Najnowsze LLM-y mają setki miliardów, a nawet biliony parametrów, co daje im niezwykłe zdolności.
+
+I po trzecie, "wielka moc obliczeniowa". Trenowanie tak ogromnych modeli wymaga gigantycznej mocy obliczeniowej, dostępnej tylko w największych centrach danych. Proces ten może trwać tygodnie lub miesiące i pochłaniać energię o wartości milionów dolarów.
+
+Jak właściwie działają te modele? W sercu większości nowoczesnych LLM-ów leży architektura zwana "Transformer", wprowadzona w 2017 roku. Jej kluczowym elementem jest mechanizm "uwagi" (attention). Pozwala on modelowi ważyć znaczenie różnych słów w tekście wejściowym podczas przetwarzania i generowania odpowiedzi. Dzięki temu model wie, na których fragmentach zdania powinien się skupić. Na przykład, w zdaniu "Robot podniósł piłkę, bo był za ciężki", mechanizm uwagi pomoże modelowi zrozumieć, że "on" odnosi się do robota, a nie do piłki.
+
+W swojej istocie, LLM to niezwykle zaawansowany "przewidywacz następnego słowa". Kiedy dajemy mu jakieś zdanie, on na podstawie wszystkiego, czego się nauczył, oblicza prawdopodobieństwo wystąpienia każdego możliwego słowa jako następnego i wybiera to najbardziej prawdopodobne. Potem dokleja to słowo do sekwencji i powtarza proces, generując tekst słowo po słowie. To, co wydaje się prostą zasadą, w połączeniu z ogromną skalą danych i parametrów, prowadzi do zdumiewająco spójnych i kreatywnych rezultatów.
+
+Mimo swoich imponujących zdolności, wielkie modele językowe mają też istotne ograniczenia, o których absolutnie trzeba pamiętać.
+
+Po pierwsze, "halucynacje". To zjawisko polega na tym, że model generuje informacje, które brzmią wiarygodnie, ale są całkowicie fałszywe lub bezsensowne. Dzieje się tak, ponieważ model nie "wie" niczego w ludzkim tego słowa znaczeniu. On jedynie statystycznie przewiduje kolejne słowa. Czasami te statystyki prowadzą go na manowce, w wyniku czego "wymyśla" fakty, daty czy cytaty. Dlatego kluczowe jest, aby zawsze weryfikować informacje generowane przez LLM-y, zwłaszcza w krytycznych zastosowaniach.
+
+Po drugie, "uprzedzenia" (biases). Modele uczą się na danych stworzonych przez ludzi, a te dane odzwierciedlają nasze społeczne uprzedzenia i stereotypy. W rezultacie LLM może powielać, a nawet wzmacniać te szkodliwe wzorce, faworyzując pewne grupy społeczne lub generując obraźliwe treści. Twórcy modeli ciężko pracują nad minimalizacją tego problemu, ale jest to jedno z największych wyzwań w dziedzinie etyki AI.
+
+Po trzecie, brak realnego rozumienia świata. Model operuje wyłącznie na poziomie języka i statystycznych korelacji między słowami. Nie ma ciała, nie ma zmysłów, nie ma doświadczeń ze światem fizycznym. Nie rozumie, co to znaczy "być ciężkim" albo "być czerwonym" w taki sposób, jak my to rozumiemy. Jego wiedza jest powierzchowna, oparta na wzorcach tekstowych, a nie na głębokim, przyczynowo-skutkowym modelu rzeczywistości.
+
+Podsumowując, wielkie modele językowe to potężne narzędzia, których "wielkość" odnosi się do danych, parametrów i mocy obliczeniowej. Działają one głównie w oparciu o architekturę Transformer i mechanizm uwagi, przewidując kolejne słowa w sekwencji. Jednak musimy być świadomi ich ograniczeń, takich jak skłonność do halucynacji, powielanie uprzedzeń i brak prawdziwego rozumienia świata.
+
+To wszystko na dziś. W kolejnym odcinku zajmiemy się praktyczną stroną interakcji z LLM-ami i nauczymy się, jak tworzyć skuteczne zapytania, czyli "prompty", aby uzyskać od nich jak najlepsze rezultaty. Dziękuję i do usłyszenia!

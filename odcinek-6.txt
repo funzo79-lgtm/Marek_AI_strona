@@ -1,0 +1,28 @@
+Witajcie w szóstym odcinku podcastu "Marek AI". W poprzednich odcinkach przeszliśmy drogę od podstawowych promptów do tworzenia spersonalizowanych asystentów. Dzisiaj wkraczamy w kolejny, niezwykle ekscytujący etap ewolucji sztucznej inteligencji: świat autonomicznych agentów AI.
+
+Jaka jest fundamentalna różnica między asystentem a agentem? Asystent AI, nawet ten najbardziej zaawansowany, jest z natury reaktywny. Czeka na nasze polecenie, przetwarza je i dostarcza odpowiedź. Jego działanie kończy się wraz z wygenerowaniem tekstu. Agent AI idzie o krok dalej. Jest proaktywny. Otrzymuje od nas cel, a następnie samodzielnie planuje i wykonuje sekwencję działań, aby ten cel osiągnąć.
+
+Kluczową koncepcją, która umożliwia tę autonomię, jest zdolność agenta do korzystania z narzędzi (tools). Narzędziem może być praktycznie wszystko: wyszukiwarka internetowa, kalkulator, kalendarz, interfejs do wysyłania e-maili, a nawet inne modele AI, na przykład do generowania obrazów. Agent nie jest już ograniczony do wiedzy, na której został wytrenowany. Kiedy napotyka problem, którego nie może rozwiązać za pomocą swojej wewnętrznej wiedzy, potrafi "sięgnąć" po odpowiednie narzędzie.
+
+Wyobraźmy sobie, że prosimy asystenta: "Zaplanuj mi weekendową wycieczkę do Krakowa". Asystent wygeneruje nam listę propozycji: co zwiedzić, gdzie zjeść. Ale to my musimy potem wejść na strony internetowe, sprawdzić pogodę, zarezerwować bilety i hotel.
+
+Jeśli to samo zadanie damy agentowi AI, jego działanie będzie wyglądać zupełnie inaczej. Agent najpierw stworzy plan. Krok 1: sprawdzić prognozę pogody w Krakowie na najbliższy weekend. Aby to zrobić, użyje narzędzia "wyszukiwarka internetowa". Krok 2: znaleźć połączenia kolejowe z Warszawy do Krakowa. Użyje narzędzia do rezerwacji biletów. Krok 3: znaleźć hotel w centrum, który ma dobre opinie i wolne pokoje. Użyje narzędzia do rezerwacji hoteli. Krok 4: na podstawie pogody i dostępności, zarezerwować bilety i hotel, a następnie wysłać mi potwierdzenie e-mailem, używając narzędzia "e-mail".
+
+Widzimy tutaj fundamentalną zmianę. Agent nie tylko dostarcza informacji, on wykonuje zadania w cyfrowym świecie.
+
+Jak to działa pod maską? Wiele systemów agentowych opiera się na architekturze zwanej ReAct, co jest skrótem od "Reason and Act", czyli "Rozumuj i Działaj". Działanie agenta w tej pętli wygląda następująco:
+
+Po pierwsze, Obserwacja (Observation). Agent analizuje bieżącą sytuację i cel, który ma osiągnąć.
+Po drugie, Rozumowanie (Reasoning). Na podstawie obserwacji, agent "myśli" i tworzy wewnętrzny monolog. "OK, moim celem jest zarezerwowanie wycieczki. Najpierw muszę poznać pogodę. Najlepszym narzędziem do tego będzie wyszukiwarka."
+Po trzecie, Działanie (Action). Agent decyduje się na konkretne działanie, czyli wybiera narzędzie i podaje mu odpowiednie parametry. Na przykład: "Użyj narzędzia `wyszukiwarka` z zapytaniem `pogoda Kraków ten weekend`".
+Po wykonaniu akcji, agent wraca do kroku pierwszego, czyli Obserwacji. Wynik działania narzędzia (czyli np. informacja o pogodzie) staje się nową obserwacją. I pętla się powtarza. Agent znów rozumuje: "OK, pogoda będzie słoneczna. Teraz muszę znaleźć pociąg." i wykonuje kolejne działanie. Ten cykl trwa aż do momentu, gdy cel zostanie w pełni zrealizowany.
+
+Ta pętla rozumowanie-działanie-obserwacja jest kluczem do autonomii. Pozwala agentowi na dynamiczne reagowanie na zmieniające się warunki, poprawianie własnych błędów i realizowanie złożonych, wieloetapowych zadań.
+
+Oczywiście, technologia ta jest wciąż na wczesnym etapie rozwoju i ma swoje ograniczenia. Agenci mogą czasem utknąć w pętli, wybrać niewłaściwe narzędzie lub błędnie zinterpretować wyniki. Wymagają starannego projektowania i nadzoru. Jednak potencjał jest ogromny.
+
+Mówimy tu o przyszłości, w której będziemy mieli osobistych agentów AI, którzy będą zarządzać naszymi kalendarzami, rezerwować spotkania, robić zakupy online, planować podróże i filtrować naszą skrzynkę odbiorczą. W biznesie, agenci będą mogli automatyzować analizę danych, tworzyć raporty, zarządzać kampaniami marketingowymi czy obsługiwać zapytania klientów.
+
+Podsumowując, autonomiczni agenci AI to ewolucja od reaktywnych asystentów do proaktywnych wykonawców. Ich siła leży w zdolności do korzystania z narzędzi i działania w pętli ReAct, czyli rozumowanie-działanie-obserwacja, aby samodzielnie realizować postawione przed nimi cele. To technologia, która ma potencjał, by fundamentalnie zmienić sposób, w jaki pracujemy i żyjemy.
+
+To wszystko w tym odcinku. W następnym zbadamy, co się stanie, gdy połączymy siły wielu wyspecjalizowanych agentów, tworząc całe zespoły AI, które współpracują ze sobą, aby rozwiązywać jeszcze bardziej złożone problemy. Dziękuję i do usłyszenia!

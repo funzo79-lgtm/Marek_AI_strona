@@ -1,0 +1,25 @@
+Witajcie w siódmym odcinku podcastu "Marek AI". W poprzednim odcinku rozmawialiśmy o autonomicznych agentach, którzy potrafią samodzielnie wykonywać zadania. Dzisiaj pójdziemy o krok dalej i przyjrzymy się koncepcji budowania całych zespołów agentów AI, czyli tak zwanych systemów wieloagentowych.
+
+Idea jest prosta i inspirowana ludzką organizacją pracy. Zamiast tworzyć jednego, ogromnego, wszechstronnego agenta, który musi być ekspertem od wszystkiego, tworzymy grupę mniejszych, wyspecjalizowanych agentów, z których każdy ma jasno zdefiniowaną rolę i kompetencje. Następnie projektujemy sposób, w jaki ci agenci będą ze sobą współpracować, aby osiągnąć wspólny, złożony cel.
+
+Dlaczego takie podejście jest korzystne? Powodów jest kilka.
+
+Po pierwsze, jakość i specjalizacja. Tak jak w ludzkim zespole, wyspecjalizowany ekspert zazwyczaj wykona swoje zadanie lepiej niż generalista. Możemy stworzyć agenta-analityka, który doskonale radzi sobie z przetwarzaniem danych, agenta-copywritera, który jest mistrzem w tworzeniu tekstów marketingowych, oraz agenta-stratega, który planuje całą kampanię. Każdy z nich, skupiając się na swojej wąskiej dziedzinie, osiągnie wyższą jakość pracy.
+
+Po drugie, modułowość i skalowalność. Systemy wieloagentowe są łatwiejsze w budowie, testowaniu i utrzymaniu. Jeśli chcemy dodać nową funkcjonalność, po prostu tworzymy nowego agenta i dołączamy go do zespołu. Jeśli jeden z agentów zaczyna popełniać błędy, możemy go naprawić lub zastąpić bez naruszania reszty systemu.
+
+Po trzecie, i co شاید najważniejsze, redukcja błędów i krytyczna ocena. Jednym z największych wyzwań w pracy z pojedynczymi modelami AI jest ich skłonność do halucynacji i generowania niepoprawnych informacji. W zespole agentów możemy wprowadzić rolę "agenta-krytyka" lub "testera". Jego jedynym zadaniem jest weryfikacja pracy innych agentów. Na przykład, agent-copywriter pisze tekst reklamy. Zanim tekst zostanie opublikowany, trafia do agenta-krytyka, którego zadaniem jest sprawdzenie go pod kątem błędów gramatycznych, spójności z marką i zgodności z faktami. Jeśli krytyk znajdzie błędy, odsyła tekst do poprawy. Taki mechanizm wzajemnej kontroli znacząco podnosi niezawodność całego systemu.
+
+Jak więc możemy zaprojektować współpracę w takim zespole? Istnieją dwa główne modele: sekwencyjny i hierarchiczny.
+
+Model sekwencyjny przypomina linię produkcyjną. Zadanie przechodzi od jednego agenta do drugiego w określonej kolejności. Na przykład, chcemy stworzyć raport rynkowy. Najpierw agent-researcher zbiera dane z internetu. Następnie przekazuje je do agenta-analityka, który je przetwarza i wyciąga wnioski. Wyniki analizy trafiają do agenta-pisarza, który tworzy z nich spójny raport. Na końcu, agent-korektor sprawdza tekst pod kątem błędów. To prosty i przewidywalny przepływ pracy.
+
+Model hierarchiczny jest bardziej złożony i przypomina strukturę firmy z menedżerem i podwładnymi. Mamy tu "agenta-menedżera" lub "orkiestratora", który rozdziela zadania pomiędzy agentów-pracowników. Menedżer otrzymuje od nas główny cel, na przykład "zwiększyć sprzedaż w sklepie internetowym o 20% w następnym kwartale". Następnie rozkłada ten cel na mniejsze zadania i przydziela je odpowiednim specjalistom: "agencie od social media, stwórz nową kampanię na Facebooku", "agencie od e-mail marketingu, przygotuj newsletter z promocją", "agencie od analizy danych, monitoruj wyniki i raportuj co tydzień". Menedżer nadzoruje pracę całego zespołu, koordynuje działania i dba o to, by wszystko zmierzało do realizacji nadrzędnego celu.
+
+Platformy takie jak CrewAI czy Microsoft Autogen to przykłady frameworków, które ułatwiają tworzenie i zarządzanie takimi zespołami agentów. Pozwalają one definiować role, zadania i modele współpracy, otwierając drzwi do automatyzacji niezwykle złożonych procesów biznesowych.
+
+Wyobraźmy sobie zespół agentów tworzących oprogramowanie. Mamy agenta-project managera, który rozmawia z klientem i tworzy specyfikację. Przekazuje ją agentowi-programiście, który pisze kod. Kod trafia do agenta-testera, który szuka błędów. Po poprawkach, agent-DevOps wdraża aplikację na serwer. To już nie jest science-fiction, to kierunek, w którym zmierza rozwój AI.
+
+Podsumowując, budowanie zespołów wyspecjalizowanych agentów AI to potężna strategia, która pozwala na rozwiązywanie bardziej złożonych problemów niż w przypadku pojedynczych agentów. Dzięki specjalizacji, modułowości i mechanizmom wzajemnej kontroli, systemy wieloagentowe oferują wyższą jakość, niezawodność i skalowalność. Współpraca w takich zespołach może być organizowana w modelach sekwencyjnych lub hierarchicznych, co pozwala na automatyzację skomplikowanych przepływów pracy.
+
+To wszystko w tym odcinku. W następnym, ostatnim odcinku naszej serii podstawowej, zajmiemy się jednym z najczęściej dyskutowanych i najważniejszych problemów związanych z modelami językowymi – halucynacjami AI. Dziękuję i do usłyszenia!
